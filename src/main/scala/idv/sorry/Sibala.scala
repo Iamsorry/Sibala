@@ -9,13 +9,13 @@ object Sibala {
 
 		val bicycle = ActorSystem("Sibala")
 		val banker = bicycle.actorOf(Props(classOf[Banker], "abeh"))
-		val players = new Array[ActorRef](10)
+		var players = List[ActorRef]()
 
 		for (i <- 0 to 9) {
-			players(i) = bicycle.actorOf(Props(classOf[Player], s"adia${i}"))
+			players = bicycle.actorOf(Props(classOf[Player], s"adia${i}", banker)) :: players
 		}
 
-		players.foreach(_.tell(Play, banker))
+		players.foreach(_ ! Play)
 
 		Thread.sleep(1000 * 4)
 		println("Sayonara")
