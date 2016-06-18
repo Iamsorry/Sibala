@@ -7,9 +7,9 @@ class Banker(val name: String) extends Actor {
 
 	def receive: Actor.Receive = {
 
-		case Compete(customerName, playerPoint) =>
+		case Compete(playerName, playerPoint) =>
 			val bankerPoint = rollDice()
-			println(s"$name:[$bankerPoint] vs. $customerName:[$playerPoint]")
+			println(s"$name:[$bankerPoint] vs. playerName:[$playerPoint]")
 			if (playerPoint > bankerPoint)
 				sender ! Sausage
 
