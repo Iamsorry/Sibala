@@ -12,7 +12,7 @@ object Sibala {
 		val players = new Array[ActorRef](10)
 
 		for (i <- 0 to 9) {
-			players(i) = bicycle.actorOf(Props(classOf[Player], s"Guy${i}"))
+			players(i) = bicycle.actorOf(Props(classOf[Player], s"adia${i}"))
 		}
 
 		players.foreach(_.tell(Play, banker))

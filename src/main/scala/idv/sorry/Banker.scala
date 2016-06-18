@@ -8,7 +8,7 @@ class Banker(val name: String) extends Actor {
 	def receive: Actor.Receive = {
 		case Rolled(customerName, playerPoint) =>
 			val bankerPoint = dice.nextInt(13)
-			println(s"Abeh:${bankerPoint} vs. ${customerName}:${playerPoint}")
+			println(s"${name}:[${bankerPoint}] vs. ${customerName}:[${playerPoint}]")
 			if (playerPoint > bankerPoint)
 				sender ! Sausage
 	}
