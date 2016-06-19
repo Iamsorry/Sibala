@@ -11,7 +11,7 @@ object Sibala {
 		var players = List[ActorRef]()
 
 		for (i <- 0 to 9) {
-			players = casino.actorOf(Props(classOf[Player], s"adia${i}", banker)) :: players
+			players = casino.actorOf(Props(classOf[Player], s"adia$i", banker)) :: players
 		}
 
 		players.foreach(_ ! Play)
